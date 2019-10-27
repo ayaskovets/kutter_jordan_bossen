@@ -1,13 +1,14 @@
-EXEC = kjb
+PROJ = kjb
 
 BIN_DIR = ./bin
 LIB_DIR = ./lib
 SRC_DIR = ./src
+TST_DIR = ./test
 HDR_DIR = ./include
 3RD_DIR = ./3rd_party
 
 TSRC= \
-	$(SRC_DIR)/test.cpp
+	$(TST_DIR)/test.cpp
 
 LSRC= \
 	$(SRC_DIR)/img.cpp \
@@ -23,11 +24,11 @@ LRFLAGS = $(CXXFLAGS) $(RFLAGS) -dynamiclib
 LDFLAGS = $(CXXFLAGS) $(DFLAGS) -dynamiclib
 
 release:
-	$(CXX) $(LRFLAGS) -I$(HDR_DIR) -I$(3RD_DIR) -o $(LIB_DIR)/$(EXEC).dylib $(LSRC)
-	$(CXX) $(RFLAGS)  -I$(HDR_DIR) -I$(3RD_DIR) -o $(BIN_DIR)/$(EXEC) $(TSRC) $(LIB_DIR)/$(EXEC).dylib
+	$(CXX) $(LRFLAGS) -I$(HDR_DIR) -I$(3RD_DIR) -o $(LIB_DIR)/$(PROJ).dylib $(LSRC)
+	$(CXX) $(RFLAGS)  -I$(HDR_DIR) -I$(3RD_DIR) -o $(BIN_DIR)/$(PROJ)_test $(TSRC) $(LIB_DIR)/$(PROJ).dylib
 debug:
-	$(CXX) $(LDFLAGS) -I$(HDR_DIR) -I$(3RD_DIR) -o $(LIB_DIR)/$(EXEC).dylib $(LSRC)
-	$(CXX) $(DFLAGS)  -I$(HDR_DIR) -I$(3RD_DIR) -o $(BIN_DIR)/$(EXEC) $(TSRC) $(LIB_DIR)/$(EXEC).dylib
+	$(CXX) $(LDFLAGS) -I$(HDR_DIR) -I$(3RD_DIR) -o $(LIB_DIR)/$(PROJ).dylib $(LSRC)
+	$(CXX) $(DFLAGS)  -I$(HDR_DIR) -I$(3RD_DIR) -o $(BIN_DIR)/$(PROJ)_test $(TSRC) $(LIB_DIR)/$(PROJ).dylib
 
 run:
-	./$(BIN_DIR)/$(EXEC)
+	./$(BIN_DIR)/$(PROJ)_test
