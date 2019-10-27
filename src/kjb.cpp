@@ -67,18 +67,6 @@ namespace
 
         return (v_stripe + h_stripe) / (4 * nbh_size);
     }
-
-    size_t get_random_idx(std::vector<size_t>& diag)
-    {
-        size_t rnd = 0;
-        do
-        { rnd = static_cast<size_t>(rand()) % diag.size(); }
-        while (diag[rnd] == diag.size());
-
-        const size_t idx = diag[rnd];
-        diag[rnd] = diag.size();
-        return idx;
-    }
 }
 
 void kjb_insert_internal(Image& img,
@@ -96,7 +84,17 @@ void kjb_insert_internal(Image& img,
 
     for (size_t bit = 0; bit < msg.bits(); ++bit)
     {
-        const size_t idx = get_random_idx(diag);
+        size_t rnd = 0;
+        size_t rnd_cap = 0;
+        do
+        {
+            rnd = rand();
+            rnd_cap = static_cast<size_t>(rnd) % capacity; }
+        while (diag[rnd_cap] == capacity);
+
+        const size_t idx = diag[rnd_cap];
+        diag[rnd_cap] = capacity;
+
         RGBPixel pix = img.pixel(idx);
 
         pix.b += get_luminosity(pix) * robustness * (msg.bit(bit) ? 1.f : -1.f);
@@ -122,7 +120,17 @@ Message kjb_extract_internal(const Image& img,
     std::vector<byte_t> buffer(msg_bits / 8 + (msg_bits % 8 != 0));
     for (size_t bit = 0; bit < msg_bits; ++bit)
     {
-        const size_t idx = get_random_idx(diag);
+        size_t rnd = 0;
+        size_t rnd_cap = 0;
+        do
+        {
+            rnd = rand();
+            rnd_cap = static_cast<size_t>(rnd) % capacity; }
+        while (diag[rnd_cap] == capacity);
+
+        const size_t idx = diag[rnd_cap];
+        diag[rnd_cap] = capacity;
+
         const RGBPixel pix = img.pixel(idx);
 
         const byte_t pred = get_expected_blue(img, idx, nbh_size);
