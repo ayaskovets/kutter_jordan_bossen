@@ -28,7 +28,7 @@ extern "C"
  * @param seed A seed for a pseudo-random number generator. Acts like a key
  * @param robustness Parameter that sets the robustness of the encoded message.
  *                   Keep between 0 (less robust) and 1 (more robust). The
- *                   greater its value the more 'visible' the encoded data
+ *                   greater its value the more 'visible' the encoded data.
  */
 
 __declspec(dllexport)
@@ -38,7 +38,7 @@ kjb_insert(const char* container_path,
            const unsigned char* msg_ptr,
            unsigned int msg_bits,
            unsigned int seed,
-           float robustness);
+           float robustness = .2f);
 
 /**
  * Decode a number of bits from the provided image
@@ -58,7 +58,7 @@ kjb_extract(const char* img_path,
             unsigned char* msg_buffer,
             unsigned int msg_bits,
             unsigned int seed,
-            unsigned int nbh_size);
+            unsigned int nbh_size = 2);
 
 }
 
@@ -69,12 +69,12 @@ int kjb_insert(const char* container_path,
                const unsigned char* msg_ptr,
                unsigned int msg_bits,
                unsigned int seed,
-               float robustness);
+               float robustness = .2f);
 
 int kjb_extract(const char* img_path,
                 unsigned char* msg_buffer,
                 unsigned int msg_bits,
                 unsigned int seed,
-                unsigned int nbh_size);
+                unsigned int nbh_size = 2);
 
 #endif
