@@ -25,6 +25,7 @@ public:
 
     size_t getWidth() const;
     size_t getHeight() const;
+    size_t getCapacity() const;
 
     RGBPixel pixel(size_t i, size_t j) const;
     RGBPixel pixel(size_t n) const;

@@ -32,6 +32,8 @@ size_t Image::getWidth() const
 { return width; }
 size_t Image::getHeight() const
 { return height; }
+size_t Image::getCapacity() const
+{ return width * height; }
 
 RGBPixel Image::pixel(size_t i, size_t j) const
 {
