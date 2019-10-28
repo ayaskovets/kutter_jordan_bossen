@@ -9,26 +9,28 @@ int main(int argc, char** argv)
                                   'w', 'o', 'r', 'l', 'd', '!' };
     const size_t msg_bits = sizeof(msg) * 8;
 
-    ret = kjb_insert("./images/test_2.jpg",
+    ret = kjb_insert("./images/test.jpg",
                      "./images/test_write.bmp",
                      msg,
                      msg_bits,
                      42,
-                     5,
-                     0.2);
+                     10,
+                     0.2,
+                     0.5);
     if (ret != ERR_OK)
-    { std::cout << "ERROR!" << std::endl; }
+    { std::cout << "ERROR:" << ret << std::endl; }
 
     unsigned char buffer[sizeof(msg) * 8];
     ret = kjb_extract("./images/test_write.bmp",
                       buffer,
                       msg_bits,
                       42,
-                      5,
-                      2);
+                      10,
+                      2,
+                      0.5);
     if (ret != ERR_OK)
     {
-        std::cout << "ERROR!" << std::endl;
+        std::cout << "ERROR: " << ret << std::endl;
         return 1;
     }
 

@@ -69,7 +69,7 @@ namespace
         return (v_stripe + h_stripe) / (4 * nbh_size);
     }
 
-    size_t rand_unused(const std::vector<size_t> diag)
+    size_t get_available_rand(const std::vector<size_t> diag)
     {
         size_t rnd = 0;
         do
@@ -82,7 +82,8 @@ namespace
 void _kjb_insert(Image& img,
                  const Message& msg,
                  unsigned int redundancy,
-                 float robustness)
+                 float robustness,
+                 float density)
 {
     std::vector<size_t> diag = get_diagonal_traversal(img);
     const size_t capacity = diag.size();
@@ -91,12 +92,12 @@ void _kjb_insert(Image& img,
     {
         for (unsigned int n = 0; n < redundancy; ++n)
         {
-            const size_t rnd = rand_unused(diag);
+            const size_t rnd = get_available_rand(diag);
             const size_t idx = diag[rnd % diag.size()];
             diag[rnd % diag.size()] = diag.size();
             RGBPixel pix = img.pixel(idx);
 
-            if (msg.bit(bit))
+            if (msg.bit(bit) && rnd <= RAND_MAX * density)
             { pix.b += get_luminosity(pix) * robustness; }
             else
             { pix.b -= get_luminosity(pix) * robustness; }
@@ -107,7 +108,8 @@ void _kjb_insert(Image& img,
 Message _kjb_extract(const Image& img,
                      size_t msg_bits,
                      unsigned int redundancy,
-                     size_t nbh_size)
+                     size_t nbh_len,
+                     float density)
 {
     std::vector<size_t> diag = get_diagonal_traversal(img);
     const size_t capacity = diag.size();
@@ -119,16 +121,17 @@ Message _kjb_extract(const Image& img,
         unsigned int bit_val_sum = 0;
         for (unsigned int n = 0; n < redundancy; ++n)
         {
-            const size_t rnd = rand_unused(diag);
+            const size_t rnd = get_available_rand(diag);
             const size_t idx = diag[rnd % diag.size()];
             diag[rnd % diag.size()] = diag.size();
             const RGBPixel pix = img.pixel(idx);
 
-            const byte_t pred = get_expected_blue(img, idx, nbh_size);
+            const byte_t pred = get_expected_blue(img, idx, nbh_len);
             bit_val_sum += (pix.b > pred && pix.b - pred < 127) ||
                            (pix.b < pred && pred - pix.b > 127);
         }
-        buffer[bit / 8] += ((bit_val_sum > (redundancy / 2)) << (bit % 8));
+        const bool bit_val = bit_val_sum > (redundancy / 2 * density);
+        buffer[bit / 8] += bit_val << (bit % 8);
     }
 
     return Message(buffer.data(), msg_bits);
@@ -140,21 +143,25 @@ int kjb_insert(const char* container_path,
                unsigned int msg_bits,
                unsigned int seed,
                unsigned int redundancy,
-               float robustness)
+               float robustness,
+               float density)
 {
     if (msg_bits == 0)
     { return ERR_OK; }
 
+    if (density > 1.f || density < 0.f)
+    { return ERR_INVALID_DENSITY; }
+
     try
     {
         Image container(container_path);
-        if (msg_bits * redundancy > container.getHeight() * container.getWidth())
+        if (msg_bits * redundancy > container.getCapacity())
         { return ERR_MSG_TOO_LARGE; }
 
         const Message msg(msg_ptr, msg_bits);
 
         srand(seed);
-        _kjb_insert(container, msg, redundancy, robustness);
+        _kjb_insert(container, msg, redundancy, robustness, density);
 
         if (container.writeBMP(result_path))
         { return ERR_OK; }
@@ -174,22 +181,26 @@ int kjb_extract(const char* img_path,
                 unsigned int msg_bits,
                 unsigned int seed,
                 unsigned int redundancy,
-                unsigned int nbh_size)
+                unsigned int nbh_len,
+                float density)
 {
     if (msg_bits == 0)
     { return ERR_OK; }
 
+    if (density > 1.f || density < 0.f)
+    { return ERR_INVALID_DENSITY; }
+
     try
     {
         const Image img(img_path);
-        if (msg_bits * redundancy > img.getHeight() * img.getWidth())
+        if (msg_bits * redundancy > img.getCapacity())
         { return ERR_MSG_TOO_LARGE; }
 
-        if (nbh_size > std::min(img.getWidth(), img.getHeight()) / 2)
+        if (nbh_len > std::min(img.getWidth(), img.getHeight()) / 2)
         { return ERR_NEIGHBOURHOOD_TOO_LARGE; }
 
         srand(seed);
-        Message msg = _kjb_extract(img, msg_bits, redundancy, nbh_size);
+        Message msg = _kjb_extract(img, msg_bits, redundancy, nbh_len, density);
         std::memcpy(msg_buffer, msg.data(), msg.bytes());
     }
     catch (const char* ex)

@@ -10,7 +10,8 @@ enum
     ERR_IMAGE_OPEN = 1,
     ERR_IMAGE_WRITE = 2,
     ERR_MSG_TOO_LARGE = 3,
-    ERR_NEIGHBOURHOOD_TOO_LARGE = 4
+    ERR_NEIGHBOURHOOD_TOO_LARGE = 4,
+    ERR_INVALID_DENSITY = 5
 };
 
 #ifdef _WIN32
@@ -30,6 +31,8 @@ extern "C"
  * @param robustness Parameter that sets the robustness of the encoded message.
  *                   Keep between 0 (less robust) and 1 (more robust). The
  *                   greater its value the more 'visible' the encoded data.
+ * @param density Probability of a bit being inserted into a pixel. Must be
+ *                between 0 and 1. Used to increase cryptographic strength
  */
 
 __declspec(dllexport)
@@ -40,7 +43,8 @@ kjb_insert(const char* container_path,
            unsigned int msg_bits,
            unsigned int seed,
            unsigned int redundancy,
-           float robustness = .2f);
+           float robustness = .2f,
+           float density = .5f);
 
 /**
  * Decode a number of bits from the provided image
@@ -51,8 +55,10 @@ kjb_insert(const char* container_path,
  * @param msg_bits How many bits to extract from the image
  * @param seed A seed for a pseudo-random number generator. Acts like a key
  * @param redundancy Maximum number of times which each bit gets inserted
- * @param nbh_size Size of a pixel neighbourhood area that is used for
+ * @param nbh_len Size of a pixel neighbourhood area that is used for
  *                 computing the predicted blue color value. Keep in 1-3 range
+ * @param density Probability of a bit being inserted into a pixel. Must be
+ *                between 0 and 1. Used to increase cryptographic strength
  */
 
 __declspec(dllexport)
@@ -62,7 +68,8 @@ kjb_extract(const char* img_path,
             unsigned int msg_bits,
             unsigned int seed,
             unsigned int redundancy,
-            unsigned int nbh_size = 2);
+            unsigned int nbh_len = 2,
+            float density = .5f);
 
 }
 
@@ -74,13 +81,15 @@ int kjb_insert(const char* container_path,
                unsigned int msg_bits,
                unsigned int seed,
                unsigned int redundancy,
-               float robustness = .2f);
+               float robustness = .2f,
+               float density = .5f);
 
 int kjb_extract(const char* img_path,
                 unsigned char* msg_buffer,
                 unsigned int msg_bits,
                 unsigned int seed,
                 unsigned int redundancy,
-                unsigned int nbh_size = 2);
+                unsigned int nbh_len = 2,
+                float density = .5f);
 
 #endif
