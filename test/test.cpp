@@ -14,6 +14,7 @@ int main(int argc, char** argv)
                      msg,
                      msg_bits,
                      42,
+                     5,
                      0.2);
     if (ret != ERR_OK)
     { std::cout << "ERROR!" << std::endl; }
@@ -23,6 +24,7 @@ int main(int argc, char** argv)
                       buffer,
                       msg_bits,
                       42,
+                      5,
                       2);
     if (ret != ERR_OK)
     {

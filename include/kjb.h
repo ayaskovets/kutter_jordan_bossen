@@ -26,6 +26,7 @@ extern "C"
  * @param msg_ptr A pointer to the message buffer
  * @param msg_bits Number of bits of message to encode
  * @param seed A seed for a pseudo-random number generator. Acts like a key
+ * @param redundancy Maximum number of times which each bit gets inserted
  * @param robustness Parameter that sets the robustness of the encoded message.
  *                   Keep between 0 (less robust) and 1 (more robust). The
  *                   greater its value the more 'visible' the encoded data.
@@ -38,6 +39,7 @@ kjb_insert(const char* container_path,
            const unsigned char* msg_ptr,
            unsigned int msg_bits,
            unsigned int seed,
+           unsigned int redundancy,
            float robustness = .2f);
 
 /**
@@ -48,6 +50,7 @@ kjb_insert(const char* container_path,
  *                   Should have enough memory accesible for 'msg_bits' bits
  * @param msg_bits How many bits to extract from the image
  * @param seed A seed for a pseudo-random number generator. Acts like a key
+ * @param redundancy Maximum number of times which each bit gets inserted
  * @param nbh_size Size of a pixel neighbourhood area that is used for
  *                 computing the predicted blue color value. Keep in 1-3 range
  */
@@ -58,6 +61,7 @@ kjb_extract(const char* img_path,
             unsigned char* msg_buffer,
             unsigned int msg_bits,
             unsigned int seed,
+            unsigned int redundancy,
             unsigned int nbh_size = 2);
 
 }
@@ -69,12 +73,14 @@ int kjb_insert(const char* container_path,
                const unsigned char* msg_ptr,
                unsigned int msg_bits,
                unsigned int seed,
+               unsigned int redundancy,
                float robustness = .2f);
 
 int kjb_extract(const char* img_path,
                 unsigned char* msg_buffer,
                 unsigned int msg_bits,
                 unsigned int seed,
+                unsigned int redundancy,
                 unsigned int nbh_size = 2);
 
 #endif
