@@ -148,7 +148,7 @@ int kjb_insert(const char* container_path,
     try
     {
         Image container(container_path);
-        if (msg_bits > container.getHeight() * container.getWidth())
+        if (msg_bits * redundancy > container.getHeight() * container.getWidth())
         { return ERR_MSG_TOO_LARGE; }
 
         const Message msg(msg_ptr, msg_bits);
@@ -182,7 +182,7 @@ int kjb_extract(const char* img_path,
     try
     {
         const Image img(img_path);
-        if (msg_bits > img.getHeight() * img.getWidth())
+        if (msg_bits * redundancy > img.getHeight() * img.getWidth())
         { return ERR_MSG_TOO_LARGE; }
 
         if (nbh_size > std::min(img.getWidth(), img.getHeight()) / 2)
