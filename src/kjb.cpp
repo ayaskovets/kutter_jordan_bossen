@@ -98,9 +98,9 @@ void _kjb_insert(Image& img,
             RGBPixel pix = img.pixel(idx);
 
             if (msg.bit(bit) && rnd <= RAND_MAX * density)
-            { pix.b += get_luminosity(pix) * robustness; }
+            { pix.b += get_luminosity(pix) * (robustness / 2); }
             else
-            { pix.b -= get_luminosity(pix) * robustness; }
+            { pix.b -= get_luminosity(pix) * (robustness / 2); }
         }
     }
 }
