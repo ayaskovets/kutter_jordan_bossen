@@ -1,5 +1,6 @@
 #include "kjb.h"
 
+#include <algorithm>
 #include <cstring>
 #include <iostream>
 #include <vector>
