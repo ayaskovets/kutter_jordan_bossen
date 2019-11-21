@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Interfaces/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Interfaces/obj/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Presenters/obj/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Presenters/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenServices/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenServices/obj/Debug

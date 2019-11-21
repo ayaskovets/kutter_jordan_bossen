@@ -29,70 +29,87 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tsmFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmHashDarling = new System.Windows.Forms.ToolStripMenuItem();
+            this.fdOpen = new System.Windows.Forms.OpenFileDialog();
+            this.fdSave = new System.Windows.Forms.SaveFileDialog();
+            this.txtMessage = new System.Windows.Forms.TextBox();
             this.tbRobustness = new System.Windows.Forms.TrackBar();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblRobustness = new System.Windows.Forms.Label();
+            this.pbSourcePicture = new System.Windows.Forms.PictureBox();
+            this.gbSettings = new System.Windows.Forms.GroupBox();
             this.lblDensity = new System.Windows.Forms.Label();
+            this.lblRedundancy = new System.Windows.Forms.Label();
             this.tbDensity = new System.Windows.Forms.TrackBar();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.lblSeed = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.hashDarlinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblSeed = new System.Windows.Forms.Label();
+            this.lblRobustness = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.gbMessage = new System.Windows.Forms.GroupBox();
+            this.gbLog = new System.Windows.Forms.GroupBox();
+            this.txtLog = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbRobustness)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSourcePicture)).BeginInit();
+            this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbDensity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.gbMessage.SuspendLayout();
+            this.gbLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.hashDarlinToolStripMenuItem});
+            this.tsmFile,
+            this.tsmHashDarling});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // openFileDialog1
+            // tsmFile
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.tsmFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmOpen,
+            this.tsmSaveAs});
+            this.tsmFile.Name = "tsmFile";
+            this.tsmFile.Size = new System.Drawing.Size(48, 20);
+            this.tsmFile.Text = "Файл";
             // 
-            // файлToolStripMenuItem
+            // tsmOpen
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveAsToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.tsmOpen.Name = "tsmOpen";
+            this.tsmOpen.Size = new System.Drawing.Size(162, 22);
+            this.tsmOpen.Text = "Открыть";
+            this.tsmOpen.Click += new System.EventHandler(this.OpenSourceImageHandler);
             // 
-            // textBox1
+            // tsmSaveAs
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(356, 97);
-            this.textBox1.TabIndex = 2;
+            this.tsmSaveAs.Name = "tsmSaveAs";
+            this.tsmSaveAs.Size = new System.Drawing.Size(162, 22);
+            this.tsmSaveAs.Text = "Сохранить как...";
+            this.tsmSaveAs.Click += new System.EventHandler(this.SaveSourceImageHandler);
+            // 
+            // tsmHashDarling
+            // 
+            this.tsmHashDarling.Name = "tsmHashDarling";
+            this.tsmHashDarling.Size = new System.Drawing.Size(87, 20);
+            this.tsmHashDarling.Text = "Hash Darling";
+            this.tsmHashDarling.Click += new System.EventHandler(this.HashDarlingHandler);
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMessage.Location = new System.Drawing.Point(3, 16);
+            this.txtMessage.Multiline = true;
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtMessage.Size = new System.Drawing.Size(356, 97);
+            this.txtMessage.TabIndex = 2;
             // 
             // tbRobustness
             // 
@@ -105,56 +122,35 @@
             this.tbRobustness.TabIndex = 3;
             this.tbRobustness.Value = 5000;
             // 
-            // pictureBox1
+            // pbSourcePicture
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pbSourcePicture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(408, 411);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.pbSourcePicture.Location = new System.Drawing.Point(12, 27);
+            this.pbSourcePicture.Name = "pbSourcePicture";
+            this.pbSourcePicture.Size = new System.Drawing.Size(408, 411);
+            this.pbSourcePicture.TabIndex = 5;
+            this.pbSourcePicture.TabStop = false;
             // 
-            // openToolStripMenuItem
+            // gbSettings
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveAsToolStripMenuItem.Text = "Save as...";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gbSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.lblDensity);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tbDensity);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
-            this.groupBox1.Controls.Add(this.lblSeed);
-            this.groupBox1.Controls.Add(this.lblRobustness);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.tbRobustness);
-            this.groupBox1.Location = new System.Drawing.Point(426, 27);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(362, 151);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Settings";
-            // 
-            // lblRobustness
-            // 
-            this.lblRobustness.AutoSize = true;
-            this.lblRobustness.Location = new System.Drawing.Point(6, 70);
-            this.lblRobustness.Name = "lblRobustness";
-            this.lblRobustness.Size = new System.Drawing.Size(63, 13);
-            this.lblRobustness.TabIndex = 8;
-            this.lblRobustness.Text = "Robustness";
+            this.gbSettings.Controls.Add(this.lblDensity);
+            this.gbSettings.Controls.Add(this.lblRedundancy);
+            this.gbSettings.Controls.Add(this.tbDensity);
+            this.gbSettings.Controls.Add(this.numericUpDown2);
+            this.gbSettings.Controls.Add(this.lblSeed);
+            this.gbSettings.Controls.Add(this.lblRobustness);
+            this.gbSettings.Controls.Add(this.numericUpDown1);
+            this.gbSettings.Controls.Add(this.tbRobustness);
+            this.gbSettings.Location = new System.Drawing.Point(426, 27);
+            this.gbSettings.Name = "gbSettings";
+            this.gbSettings.Size = new System.Drawing.Size(362, 151);
+            this.gbSettings.TabIndex = 5;
+            this.gbSettings.TabStop = false;
+            this.gbSettings.Text = "Settings";
             // 
             // lblDensity
             // 
@@ -164,6 +160,15 @@
             this.lblDensity.Size = new System.Drawing.Size(42, 13);
             this.lblDensity.TabIndex = 10;
             this.lblDensity.Text = "Density";
+            // 
+            // lblRedundancy
+            // 
+            this.lblRedundancy.AutoSize = true;
+            this.lblRedundancy.Location = new System.Drawing.Point(172, 123);
+            this.lblRedundancy.Name = "lblRedundancy";
+            this.lblRedundancy.Size = new System.Drawing.Size(68, 13);
+            this.lblRedundancy.TabIndex = 14;
+            this.lblRedundancy.Text = "Redundancy";
             // 
             // tbDensity
             // 
@@ -175,12 +180,12 @@
             this.tbDensity.SmallChange = 100;
             this.tbDensity.TabIndex = 9;
             // 
-            // numericUpDown1
+            // numericUpDown2
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(59, 121);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(107, 20);
-            this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown2.Location = new System.Drawing.Point(246, 121);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(113, 20);
+            this.numericUpDown2.TabIndex = 13;
             // 
             // lblSeed
             // 
@@ -191,67 +196,61 @@
             this.lblSeed.TabIndex = 11;
             this.lblSeed.Text = "Seed";
             // 
-            // label3
+            // lblRobustness
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(172, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Redundancy";
+            this.lblRobustness.AutoSize = true;
+            this.lblRobustness.Location = new System.Drawing.Point(6, 70);
+            this.lblRobustness.Name = "lblRobustness";
+            this.lblRobustness.Size = new System.Drawing.Size(63, 13);
+            this.lblRobustness.TabIndex = 8;
+            this.lblRobustness.Text = "Robustness";
             // 
-            // numericUpDown2
+            // numericUpDown1
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(246, 121);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(113, 20);
-            this.numericUpDown2.TabIndex = 13;
+            this.numericUpDown1.Location = new System.Drawing.Point(59, 121);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(107, 20);
+            this.numericUpDown1.TabIndex = 8;
             // 
-            // groupBox2
+            // gbMessage
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Location = new System.Drawing.Point(426, 184);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(362, 116);
-            this.groupBox2.TabIndex = 15;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Message";
+            this.gbMessage.Controls.Add(this.txtMessage);
+            this.gbMessage.Location = new System.Drawing.Point(426, 184);
+            this.gbMessage.Name = "gbMessage";
+            this.gbMessage.Size = new System.Drawing.Size(362, 116);
+            this.gbMessage.TabIndex = 10;
+            this.gbMessage.TabStop = false;
+            this.gbMessage.Text = "Message";
             // 
-            // groupBox3
+            // gbLog
             // 
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Location = new System.Drawing.Point(426, 306);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(362, 132);
-            this.groupBox3.TabIndex = 16;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Log";
+            this.gbLog.Controls.Add(this.txtLog);
+            this.gbLog.Location = new System.Drawing.Point(426, 306);
+            this.gbLog.Name = "gbLog";
+            this.gbLog.Size = new System.Drawing.Size(362, 132);
+            this.gbLog.TabIndex = 15;
+            this.gbLog.TabStop = false;
+            this.gbLog.Text = "Log";
             // 
-            // textBox2
+            // txtLog
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(3, 16);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(356, 113);
-            this.textBox2.TabIndex = 2;
-            // 
-            // hashDarlinToolStripMenuItem
-            // 
-            this.hashDarlinToolStripMenuItem.Name = "hashDarlinToolStripMenuItem";
-            this.hashDarlinToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.hashDarlinToolStripMenuItem.Text = "Hash Darlin";
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLog.Location = new System.Drawing.Point(3, 16);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLog.Size = new System.Drawing.Size(356, 113);
+            this.txtLog.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.gbLog);
+            this.Controls.Add(this.gbMessage);
+            this.Controls.Add(this.gbSettings);
+            this.Controls.Add(this.pbSourcePicture);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -259,16 +258,16 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbRobustness)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSourcePicture)).EndInit();
+            this.gbSettings.ResumeLayout(false);
+            this.gbSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbDensity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.gbMessage.ResumeLayout(false);
+            this.gbMessage.PerformLayout();
+            this.gbLog.ResumeLayout(false);
+            this.gbLog.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,26 +276,26 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hashDarlinToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem tsmFile;
+        private System.Windows.Forms.ToolStripMenuItem tsmOpen;
+        private System.Windows.Forms.ToolStripMenuItem tsmSaveAs;
+        private System.Windows.Forms.ToolStripMenuItem tsmHashDarling;
+        private System.Windows.Forms.OpenFileDialog fdOpen;
+        private System.Windows.Forms.SaveFileDialog fdSave;
+        private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.TrackBar tbRobustness;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pbSourcePicture;
+        private System.Windows.Forms.GroupBox gbSettings;
         private System.Windows.Forms.Label lblDensity;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblRedundancy;
         private System.Windows.Forms.TrackBar tbDensity;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label lblSeed;
         private System.Windows.Forms.Label lblRobustness;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox gbMessage;
+        private System.Windows.Forms.GroupBox gbLog;
+        private System.Windows.Forms.TextBox txtLog;
     }
 }
 
