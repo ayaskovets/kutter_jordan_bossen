@@ -36,6 +36,12 @@ namespace KutterJordanBossenForm
             set => nudSeed.Value = value;
         }
 
+        public int Redundancy
+        {
+            get => (int)nudRedundancy.Value;
+            set => nudRedundancy.Value = value;
+        }
+
         public string SourcePath
         {
             get => fdOpen.FileName;
@@ -54,12 +60,19 @@ namespace KutterJordanBossenForm
             set => tbNeighbourhoodLength.Value = value;
         }
 
+        public string OperationInfo
+        {
+            get => txtLog.Text;
+            set => txtLog.Text = value;
+        }
+
+
         public MainForm()
         {
             InitializeComponent();
 
             // TODO: change to IoC
-            //_presenter = new MainFormPresenter(this, null);
+            _presenter = new MainFormPresenter(this, null);
         }
 
         private void OpenSourceImageHandler(object sender, EventArgs e)
@@ -98,7 +111,7 @@ namespace KutterJordanBossenForm
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                _presenter.Hash();
+                _presenter.Encrypt();
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception exception)
@@ -119,7 +132,10 @@ namespace KutterJordanBossenForm
 
         private void tbNeighbourhoodLength_Scroll(object sender, EventArgs e)
         {
-            nudNeighbourhoodLength.Value = ConvertTrackBarValue(sender);
+            if (sender is TrackBar trackBar)
+            {
+                nudNeighbourhoodLength.Value = trackBar.Value;
+            }
         }
 
         private void nudDensity_ValueChanged(object sender, EventArgs e)
@@ -142,7 +158,7 @@ namespace KutterJordanBossenForm
         {
             if (sender is NumericUpDown numericUpDown && numericUpDown.Focused)
             {
-                tbNeighbourhoodLength.Value = (int)(numericUpDown.Value * tbDensity.Maximum);
+                tbNeighbourhoodLength.Value = (int)numericUpDown.Value;
             }
         }
 

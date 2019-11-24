@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ABC0E52B-D774-4700-B04B-2B254E91EC82}</ProjectGuid>
+    <ProjectGuid>{E25869AB-6F56-4B1F-8FED-31A91B122D06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KutterJordanBossenForm.Interfaces</RootNamespace>
-    <AssemblyName>KutterJordanBossenForm.Interfaces</AssemblyName>
+    <RootNamespace>KutterJordanBossenRepository</RootNamespace>
+    <AssemblyName>KutterJordanBossenRepository</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICryptoRepository.cs" />
-    <Compile Include="IEncryptionService.cs" />
-    <Compile Include="IMainFormView.cs" />
+    <Compile Include="NativeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KutterJordanBossenForm.Interfaces\KutterJordanBossenForm.Core.csproj">
+      <Project>{ABC0E52B-D774-4700-B04B-2B254E91EC82}</Project>
+      <Name>KutterJordanBossenForm.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
