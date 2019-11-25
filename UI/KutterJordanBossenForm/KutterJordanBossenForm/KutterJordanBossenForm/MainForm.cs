@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Threading;
 using System.Windows.Forms;
 
+using KutterJordanBossen.IoC;
+
 using KutterJordanBossenForm.Core;
+using KutterJordanBossenForm.Interfaces;
 using KutterJordanBossenForm.Presenters;
 
 namespace KutterJordanBossenForm
@@ -72,7 +76,8 @@ namespace KutterJordanBossenForm
             InitializeComponent();
 
             // TODO: change to IoC
-            _presenter = new MainFormPresenter(this, null);
+            var service = Thread.CurrentThread.GetService<IEncryptionService>();
+            _presenter = new MainFormPresenter(this, service);
         }
 
         private void OpenSourceImageHandler(object sender, EventArgs e)

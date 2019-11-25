@@ -8,7 +8,7 @@ namespace KutterJordanBossenForm.Presenters
         private IMainFormView _view;
 
         private IEncryptionService _service;
-
+        
         public MainFormPresenter(IMainFormView view, IEncryptionService service)
         {
             _view = view;

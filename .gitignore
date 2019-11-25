@@ -17,3 +17,6 @@
 *.txt
 /UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm/obj/Debug/KutterJordanBossenForm.MainForm.resources
 /UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm/obj/Debug/KutterJordanBossenForm.Properties.Resources.resources
+*.dll
+*.xml
+*.force

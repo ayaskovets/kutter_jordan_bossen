@@ -39,6 +39,9 @@
             this.tbRobustness = new System.Windows.Forms.TrackBar();
             this.pbSourcePicture = new System.Windows.Forms.PictureBox();
             this.gbSettings = new System.Windows.Forms.GroupBox();
+            this.nudNeighbourhoodLength = new System.Windows.Forms.NumericUpDown();
+            this.lblNeighbourhoodLength = new System.Windows.Forms.Label();
+            this.tbNeighbourhoodLength = new System.Windows.Forms.TrackBar();
             this.nudDensity = new System.Windows.Forms.NumericUpDown();
             this.nudRobustness = new System.Windows.Forms.NumericUpDown();
             this.lblDensity = new System.Windows.Forms.Label();
@@ -54,13 +57,12 @@
             this.sContainerMain = new System.Windows.Forms.SplitContainer();
             this.sContainerInputs = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.tbNeighbourhoodLength = new System.Windows.Forms.TrackBar();
-            this.lblNeighbourhoodLength = new System.Windows.Forms.Label();
-            this.nudNeighbourhoodLength = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbRobustness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSourcePicture)).BeginInit();
             this.gbSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNeighbourhoodLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbNeighbourhoodLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDensity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRobustness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDensity)).BeginInit();
@@ -78,8 +80,6 @@
             this.sContainerInputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbNeighbourhoodLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNeighbourhoodLength)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -89,7 +89,7 @@
             this.tsmHashDarling});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(722, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(851, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -105,14 +105,14 @@
             // tsmOpen
             // 
             this.tsmOpen.Name = "tsmOpen";
-            this.tsmOpen.Size = new System.Drawing.Size(162, 22);
+            this.tsmOpen.Size = new System.Drawing.Size(163, 22);
             this.tsmOpen.Text = "Открыть";
             this.tsmOpen.Click += new System.EventHandler(this.OpenSourceImageHandler);
             // 
             // tsmSaveAs
             // 
             this.tsmSaveAs.Name = "tsmSaveAs";
-            this.tsmSaveAs.Size = new System.Drawing.Size(162, 22);
+            this.tsmSaveAs.Size = new System.Drawing.Size(163, 22);
             this.tsmSaveAs.Text = "Сохранить как...";
             this.tsmSaveAs.Click += new System.EventHandler(this.SaveSourceImageHandler);
             // 
@@ -130,7 +130,7 @@
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMessage.Size = new System.Drawing.Size(297, 81);
+            this.txtMessage.Size = new System.Drawing.Size(315, 123);
             this.txtMessage.TabIndex = 2;
             // 
             // tbRobustness
@@ -141,7 +141,7 @@
             this.tbRobustness.Location = new System.Drawing.Point(146, 70);
             this.tbRobustness.Maximum = 10000;
             this.tbRobustness.Name = "tbRobustness";
-            this.tbRobustness.Size = new System.Drawing.Size(152, 45);
+            this.tbRobustness.Size = new System.Drawing.Size(170, 45);
             this.tbRobustness.SmallChange = 100;
             this.tbRobustness.TabIndex = 3;
             this.tbRobustness.Value = 5000;
@@ -153,7 +153,7 @@
             this.pbSourcePicture.InitialImage = null;
             this.pbSourcePicture.Location = new System.Drawing.Point(0, 0);
             this.pbSourcePicture.Name = "pbSourcePicture";
-            this.pbSourcePicture.Size = new System.Drawing.Size(400, 473);
+            this.pbSourcePicture.Size = new System.Drawing.Size(511, 582);
             this.pbSourcePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbSourcePicture.TabIndex = 5;
             this.pbSourcePicture.TabStop = false;
@@ -177,10 +177,48 @@
             this.gbSettings.Controls.Add(this.tbRobustness);
             this.gbSettings.Location = new System.Drawing.Point(3, 3);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(305, 197);
+            this.gbSettings.Size = new System.Drawing.Size(323, 197);
             this.gbSettings.TabIndex = 5;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
+            // 
+            // nudNeighbourhoodLength
+            // 
+            this.nudNeighbourhoodLength.Location = new System.Drawing.Point(75, 130);
+            this.nudNeighbourhoodLength.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.nudNeighbourhoodLength.Name = "nudNeighbourhoodLength";
+            this.nudNeighbourhoodLength.Size = new System.Drawing.Size(65, 20);
+            this.nudNeighbourhoodLength.TabIndex = 19;
+            this.nudNeighbourhoodLength.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.nudNeighbourhoodLength.ValueChanged += new System.EventHandler(this.nudNeighbourhoodLength_ValueChanged);
+            // 
+            // lblNeighbourhoodLength
+            // 
+            this.lblNeighbourhoodLength.AutoSize = true;
+            this.lblNeighbourhoodLength.Location = new System.Drawing.Point(9, 132);
+            this.lblNeighbourhoodLength.Name = "lblNeighbourhoodLength";
+            this.lblNeighbourhoodLength.Size = new System.Drawing.Size(60, 13);
+            this.lblNeighbourhoodLength.TabIndex = 18;
+            this.lblNeighbourhoodLength.Text = "nbh_length";
+            // 
+            // tbNeighbourhoodLength
+            // 
+            this.tbNeighbourhoodLength.LargeChange = 2;
+            this.tbNeighbourhoodLength.Location = new System.Drawing.Point(146, 121);
+            this.tbNeighbourhoodLength.Maximum = 4;
+            this.tbNeighbourhoodLength.Name = "tbNeighbourhoodLength";
+            this.tbNeighbourhoodLength.Size = new System.Drawing.Size(152, 45);
+            this.tbNeighbourhoodLength.TabIndex = 17;
+            this.tbNeighbourhoodLength.Value = 1;
+            this.tbNeighbourhoodLength.Scroll += new System.EventHandler(this.tbNeighbourhoodLength_Scroll);
             // 
             // nudDensity
             // 
@@ -243,7 +281,7 @@
             // 
             this.lblRedundancy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRedundancy.AutoSize = true;
-            this.lblRedundancy.Location = new System.Drawing.Point(139, 173);
+            this.lblRedundancy.Location = new System.Drawing.Point(157, 173);
             this.lblRedundancy.Name = "lblRedundancy";
             this.lblRedundancy.Size = new System.Drawing.Size(68, 13);
             this.lblRedundancy.TabIndex = 14;
@@ -257,7 +295,7 @@
             this.tbDensity.Location = new System.Drawing.Point(146, 19);
             this.tbDensity.Maximum = 10000;
             this.tbDensity.Name = "tbDensity";
-            this.tbDensity.Size = new System.Drawing.Size(152, 45);
+            this.tbDensity.Size = new System.Drawing.Size(170, 45);
             this.tbDensity.SmallChange = 100;
             this.tbDensity.TabIndex = 9;
             this.tbDensity.Value = 5000;
@@ -266,7 +304,7 @@
             // nudRedundancy
             // 
             this.nudRedundancy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRedundancy.Location = new System.Drawing.Point(213, 171);
+            this.nudRedundancy.Location = new System.Drawing.Point(231, 171);
             this.nudRedundancy.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -325,7 +363,7 @@
             this.gbMessage.Location = new System.Drawing.Point(0, 3);
             this.gbMessage.Margin = new System.Windows.Forms.Padding(0);
             this.gbMessage.Name = "gbMessage";
-            this.gbMessage.Size = new System.Drawing.Size(303, 100);
+            this.gbMessage.Size = new System.Drawing.Size(321, 142);
             this.gbMessage.TabIndex = 10;
             this.gbMessage.TabStop = false;
             this.gbMessage.Text = "Message";
@@ -339,7 +377,7 @@
             this.gbLog.Location = new System.Drawing.Point(0, 0);
             this.gbLog.Margin = new System.Windows.Forms.Padding(0);
             this.gbLog.Name = "gbLog";
-            this.gbLog.Size = new System.Drawing.Size(303, 159);
+            this.gbLog.Size = new System.Drawing.Size(321, 226);
             this.gbLog.TabIndex = 15;
             this.gbLog.TabStop = false;
             this.gbLog.Text = "Log";
@@ -352,7 +390,7 @@
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLog.Size = new System.Drawing.Size(297, 140);
+            this.txtLog.Size = new System.Drawing.Size(315, 207);
             this.txtLog.TabIndex = 2;
             // 
             // sContainerMain
@@ -372,8 +410,8 @@
             this.sContainerMain.Panel2.Controls.Add(this.sContainerInputs);
             this.sContainerMain.Panel2.Controls.Add(this.gbSettings);
             this.sContainerMain.Panel2MinSize = 310;
-            this.sContainerMain.Size = new System.Drawing.Size(722, 475);
-            this.sContainerMain.SplitterDistance = 402;
+            this.sContainerMain.Size = new System.Drawing.Size(851, 584);
+            this.sContainerMain.SplitterDistance = 513;
             this.sContainerMain.TabIndex = 16;
             // 
             // sContainerInputs
@@ -396,8 +434,8 @@
             // 
             this.sContainerInputs.Panel2.Controls.Add(this.gbLog);
             this.sContainerInputs.Panel2MinSize = 100;
-            this.sContainerInputs.Size = new System.Drawing.Size(311, 270);
-            this.sContainerInputs.SplitterDistance = 105;
+            this.sContainerInputs.Size = new System.Drawing.Size(329, 379);
+            this.sContainerInputs.SplitterDistance = 147;
             this.sContainerInputs.TabIndex = 6;
             // 
             // splitContainer2
@@ -407,49 +445,11 @@
             this.splitContainer2.Size = new System.Drawing.Size(150, 100);
             this.splitContainer2.TabIndex = 0;
             // 
-            // tbNeighbourhoodLength
-            // 
-            this.tbNeighbourhoodLength.LargeChange = 2;
-            this.tbNeighbourhoodLength.Location = new System.Drawing.Point(146, 121);
-            this.tbNeighbourhoodLength.Maximum = 4;
-            this.tbNeighbourhoodLength.Name = "tbNeighbourhoodLength";
-            this.tbNeighbourhoodLength.Size = new System.Drawing.Size(152, 45);
-            this.tbNeighbourhoodLength.TabIndex = 17;
-            this.tbNeighbourhoodLength.Value = 1;
-            this.tbNeighbourhoodLength.Scroll += new System.EventHandler(this.tbNeighbourhoodLength_Scroll);
-            // 
-            // lblNeighbourhoodLength
-            // 
-            this.lblNeighbourhoodLength.AutoSize = true;
-            this.lblNeighbourhoodLength.Location = new System.Drawing.Point(9, 132);
-            this.lblNeighbourhoodLength.Name = "lblNeighbourhoodLength";
-            this.lblNeighbourhoodLength.Size = new System.Drawing.Size(60, 13);
-            this.lblNeighbourhoodLength.TabIndex = 18;
-            this.lblNeighbourhoodLength.Text = "nbh_length";
-            // 
-            // nudNeighbourhoodLength
-            // 
-            this.nudNeighbourhoodLength.Location = new System.Drawing.Point(75, 130);
-            this.nudNeighbourhoodLength.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.nudNeighbourhoodLength.Name = "nudNeighbourhoodLength";
-            this.nudNeighbourhoodLength.Size = new System.Drawing.Size(65, 20);
-            this.nudNeighbourhoodLength.TabIndex = 19;
-            this.nudNeighbourhoodLength.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.nudNeighbourhoodLength.ValueChanged += new System.EventHandler(this.nudNeighbourhoodLength_ValueChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 499);
+            this.ClientSize = new System.Drawing.Size(851, 608);
             this.Controls.Add(this.sContainerMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -461,6 +461,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbSourcePicture)).EndInit();
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNeighbourhoodLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbNeighbourhoodLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDensity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRobustness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDensity)).EndInit();
@@ -480,8 +482,6 @@
             this.sContainerInputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbNeighbourhoodLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNeighbourhoodLength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

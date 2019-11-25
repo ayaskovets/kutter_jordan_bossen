@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossenServices"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossenRepository", "KutterJordanBossenRepository\KutterJordanBossenRepository.csproj", "{E25869AB-6F56-4B1F-8FED-31A91B122D06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossen.IoC", "KutterJordanBossen.IoC\KutterJordanBossen.IoC.csproj", "{9DC1A734-A960-4406-8900-B7A2C55DB32A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{E25869AB-6F56-4B1F-8FED-31A91B122D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E25869AB-6F56-4B1F-8FED-31A91B122D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E25869AB-6F56-4B1F-8FED-31A91B122D06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
