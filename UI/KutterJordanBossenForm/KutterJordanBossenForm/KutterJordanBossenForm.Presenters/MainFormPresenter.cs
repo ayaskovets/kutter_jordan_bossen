@@ -12,8 +12,7 @@ namespace KutterJordanBossenForm.Presenters
         public MainFormPresenter(IMainFormView view, IEncryptionService service)
         {
             _view = view;
-            // TODO: Change to IoC
-            _service = service ?? new KutterJordanBossenServices.EncryptionService(null);
+            _service = service;
         }
 
         public void Encrypt()

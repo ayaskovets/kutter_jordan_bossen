@@ -20,3 +20,5 @@
 *.dll
 *.xml
 *.force
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/packages/Autofac.4.9.4
+*.user

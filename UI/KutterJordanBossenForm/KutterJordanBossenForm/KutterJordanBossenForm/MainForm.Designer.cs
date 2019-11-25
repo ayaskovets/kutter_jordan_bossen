@@ -57,6 +57,9 @@
             this.sContainerMain = new System.Windows.Forms.SplitContainer();
             this.sContainerInputs = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.nudMessageLength = new System.Windows.Forms.NumericUpDown();
+            this.lblMessageLength = new System.Windows.Forms.Label();
+            this.decryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbRobustness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSourcePicture)).BeginInit();
@@ -80,16 +83,18 @@
             this.sContainerInputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMessageLength)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmFile,
-            this.tsmHashDarling});
+            this.tsmHashDarling,
+            this.decryptToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(851, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1108, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -105,14 +110,14 @@
             // tsmOpen
             // 
             this.tsmOpen.Name = "tsmOpen";
-            this.tsmOpen.Size = new System.Drawing.Size(163, 22);
+            this.tsmOpen.Size = new System.Drawing.Size(180, 22);
             this.tsmOpen.Text = "Открыть";
             this.tsmOpen.Click += new System.EventHandler(this.OpenSourceImageHandler);
             // 
             // tsmSaveAs
             // 
             this.tsmSaveAs.Name = "tsmSaveAs";
-            this.tsmSaveAs.Size = new System.Drawing.Size(163, 22);
+            this.tsmSaveAs.Size = new System.Drawing.Size(180, 22);
             this.tsmSaveAs.Text = "Сохранить как...";
             this.tsmSaveAs.Click += new System.EventHandler(this.SaveSourceImageHandler);
             // 
@@ -130,8 +135,9 @@
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMessage.Size = new System.Drawing.Size(315, 123);
+            this.txtMessage.Size = new System.Drawing.Size(422, 123);
             this.txtMessage.TabIndex = 2;
+            this.txtMessage.Leave += new System.EventHandler(this.txtMessage_Leave);
             // 
             // tbRobustness
             // 
@@ -141,7 +147,7 @@
             this.tbRobustness.Location = new System.Drawing.Point(146, 70);
             this.tbRobustness.Maximum = 10000;
             this.tbRobustness.Name = "tbRobustness";
-            this.tbRobustness.Size = new System.Drawing.Size(170, 45);
+            this.tbRobustness.Size = new System.Drawing.Size(277, 45);
             this.tbRobustness.SmallChange = 100;
             this.tbRobustness.TabIndex = 3;
             this.tbRobustness.Value = 5000;
@@ -153,7 +159,7 @@
             this.pbSourcePicture.InitialImage = null;
             this.pbSourcePicture.Location = new System.Drawing.Point(0, 0);
             this.pbSourcePicture.Name = "pbSourcePicture";
-            this.pbSourcePicture.Size = new System.Drawing.Size(511, 582);
+            this.pbSourcePicture.Size = new System.Drawing.Size(661, 582);
             this.pbSourcePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbSourcePicture.TabIndex = 5;
             this.pbSourcePicture.TabStop = false;
@@ -162,6 +168,8 @@
             // 
             this.gbSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbSettings.Controls.Add(this.lblMessageLength);
+            this.gbSettings.Controls.Add(this.nudMessageLength);
             this.gbSettings.Controls.Add(this.nudNeighbourhoodLength);
             this.gbSettings.Controls.Add(this.lblNeighbourhoodLength);
             this.gbSettings.Controls.Add(this.tbNeighbourhoodLength);
@@ -177,7 +185,7 @@
             this.gbSettings.Controls.Add(this.tbRobustness);
             this.gbSettings.Location = new System.Drawing.Point(3, 3);
             this.gbSettings.Name = "gbSettings";
-            this.gbSettings.Size = new System.Drawing.Size(323, 197);
+            this.gbSettings.Size = new System.Drawing.Size(430, 197);
             this.gbSettings.TabIndex = 5;
             this.gbSettings.TabStop = false;
             this.gbSettings.Text = "Settings";
@@ -211,11 +219,13 @@
             // 
             // tbNeighbourhoodLength
             // 
+            this.tbNeighbourhoodLength.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbNeighbourhoodLength.LargeChange = 2;
             this.tbNeighbourhoodLength.Location = new System.Drawing.Point(146, 121);
             this.tbNeighbourhoodLength.Maximum = 4;
             this.tbNeighbourhoodLength.Name = "tbNeighbourhoodLength";
-            this.tbNeighbourhoodLength.Size = new System.Drawing.Size(152, 45);
+            this.tbNeighbourhoodLength.Size = new System.Drawing.Size(277, 45);
             this.tbNeighbourhoodLength.TabIndex = 17;
             this.tbNeighbourhoodLength.Value = 1;
             this.tbNeighbourhoodLength.Scroll += new System.EventHandler(this.tbNeighbourhoodLength_Scroll);
@@ -281,7 +291,7 @@
             // 
             this.lblRedundancy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRedundancy.AutoSize = true;
-            this.lblRedundancy.Location = new System.Drawing.Point(157, 173);
+            this.lblRedundancy.Location = new System.Drawing.Point(284, 173);
             this.lblRedundancy.Name = "lblRedundancy";
             this.lblRedundancy.Size = new System.Drawing.Size(68, 13);
             this.lblRedundancy.TabIndex = 14;
@@ -295,7 +305,7 @@
             this.tbDensity.Location = new System.Drawing.Point(146, 19);
             this.tbDensity.Maximum = 10000;
             this.tbDensity.Name = "tbDensity";
-            this.tbDensity.Size = new System.Drawing.Size(170, 45);
+            this.tbDensity.Size = new System.Drawing.Size(277, 45);
             this.tbDensity.SmallChange = 100;
             this.tbDensity.TabIndex = 9;
             this.tbDensity.Value = 5000;
@@ -304,25 +314,20 @@
             // nudRedundancy
             // 
             this.nudRedundancy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudRedundancy.Location = new System.Drawing.Point(231, 171);
+            this.nudRedundancy.Location = new System.Drawing.Point(358, 171);
             this.nudRedundancy.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.nudRedundancy.Name = "nudRedundancy";
-            this.nudRedundancy.Size = new System.Drawing.Size(86, 20);
+            this.nudRedundancy.Size = new System.Drawing.Size(65, 20);
             this.nudRedundancy.TabIndex = 13;
-            this.nudRedundancy.Value = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
             // 
             // lblSeed
             // 
             this.lblSeed.AutoSize = true;
-            this.lblSeed.Location = new System.Drawing.Point(6, 173);
+            this.lblSeed.Location = new System.Drawing.Point(168, 173);
             this.lblSeed.Name = "lblSeed";
             this.lblSeed.Size = new System.Drawing.Size(32, 13);
             this.lblSeed.TabIndex = 11;
@@ -339,20 +344,17 @@
             // 
             // nudSeed
             // 
-            this.nudSeed.Location = new System.Drawing.Point(44, 171);
+            this.nudSeed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudSeed.Location = new System.Drawing.Point(206, 171);
             this.nudSeed.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
             this.nudSeed.Name = "nudSeed";
-            this.nudSeed.Size = new System.Drawing.Size(86, 20);
+            this.nudSeed.Size = new System.Drawing.Size(65, 20);
             this.nudSeed.TabIndex = 8;
-            this.nudSeed.Value = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
             // 
             // gbMessage
             // 
@@ -363,7 +365,7 @@
             this.gbMessage.Location = new System.Drawing.Point(0, 3);
             this.gbMessage.Margin = new System.Windows.Forms.Padding(0);
             this.gbMessage.Name = "gbMessage";
-            this.gbMessage.Size = new System.Drawing.Size(321, 142);
+            this.gbMessage.Size = new System.Drawing.Size(428, 142);
             this.gbMessage.TabIndex = 10;
             this.gbMessage.TabStop = false;
             this.gbMessage.Text = "Message";
@@ -377,20 +379,21 @@
             this.gbLog.Location = new System.Drawing.Point(0, 0);
             this.gbLog.Margin = new System.Windows.Forms.Padding(0);
             this.gbLog.Name = "gbLog";
-            this.gbLog.Size = new System.Drawing.Size(321, 226);
+            this.gbLog.Size = new System.Drawing.Size(428, 226);
             this.gbLog.TabIndex = 15;
             this.gbLog.TabStop = false;
             this.gbLog.Text = "Log";
             // 
             // txtLog
             // 
+            this.txtLog.AccessibleRole = System.Windows.Forms.AccessibleRole.Alert;
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLog.Location = new System.Drawing.Point(3, 16);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLog.Size = new System.Drawing.Size(315, 207);
+            this.txtLog.Size = new System.Drawing.Size(422, 207);
             this.txtLog.TabIndex = 2;
             // 
             // sContainerMain
@@ -409,9 +412,9 @@
             // 
             this.sContainerMain.Panel2.Controls.Add(this.sContainerInputs);
             this.sContainerMain.Panel2.Controls.Add(this.gbSettings);
-            this.sContainerMain.Panel2MinSize = 310;
-            this.sContainerMain.Size = new System.Drawing.Size(851, 584);
-            this.sContainerMain.SplitterDistance = 513;
+            this.sContainerMain.Panel2MinSize = 440;
+            this.sContainerMain.Size = new System.Drawing.Size(1108, 584);
+            this.sContainerMain.SplitterDistance = 663;
             this.sContainerMain.TabIndex = 16;
             // 
             // sContainerInputs
@@ -434,7 +437,7 @@
             // 
             this.sContainerInputs.Panel2.Controls.Add(this.gbLog);
             this.sContainerInputs.Panel2MinSize = 100;
-            this.sContainerInputs.Size = new System.Drawing.Size(329, 379);
+            this.sContainerInputs.Size = new System.Drawing.Size(436, 379);
             this.sContainerInputs.SplitterDistance = 147;
             this.sContainerInputs.TabIndex = 6;
             // 
@@ -445,11 +448,39 @@
             this.splitContainer2.Size = new System.Drawing.Size(150, 100);
             this.splitContainer2.TabIndex = 0;
             // 
+            // nudMessageLength
+            // 
+            this.nudMessageLength.Location = new System.Drawing.Point(97, 171);
+            this.nudMessageLength.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudMessageLength.Name = "nudMessageLength";
+            this.nudMessageLength.Size = new System.Drawing.Size(65, 20);
+            this.nudMessageLength.TabIndex = 20;
+            // 
+            // lblMessageLength
+            // 
+            this.lblMessageLength.AutoSize = true;
+            this.lblMessageLength.Location = new System.Drawing.Point(9, 173);
+            this.lblMessageLength.Name = "lblMessageLength";
+            this.lblMessageLength.Size = new System.Drawing.Size(82, 13);
+            this.lblMessageLength.TabIndex = 21;
+            this.lblMessageLength.Text = "Message length";
+            // 
+            // decryptToolStripMenuItem
+            // 
+            this.decryptToolStripMenuItem.Name = "decryptToolStripMenuItem";
+            this.decryptToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.decryptToolStripMenuItem.Text = "Decrypt";
+            this.decryptToolStripMenuItem.Click += new System.EventHandler(this.decryptToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 608);
+            this.ClientSize = new System.Drawing.Size(1108, 608);
             this.Controls.Add(this.sContainerMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -482,6 +513,7 @@
             this.sContainerInputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudMessageLength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,6 +550,9 @@
         private System.Windows.Forms.NumericUpDown nudNeighbourhoodLength;
         private System.Windows.Forms.Label lblNeighbourhoodLength;
         private System.Windows.Forms.TrackBar tbNeighbourhoodLength;
+        private System.Windows.Forms.Label lblMessageLength;
+        private System.Windows.Forms.NumericUpDown nudMessageLength;
+        private System.Windows.Forms.ToolStripMenuItem decryptToolStripMenuItem;
     }
 }
 

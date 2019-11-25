@@ -5,7 +5,6 @@ using System.Threading;
 using System.Windows.Forms;
 
 using KutterJordanBossen.IoC;
-
 using KutterJordanBossenForm.Core;
 using KutterJordanBossenForm.Interfaces;
 using KutterJordanBossenForm.Presenters;
@@ -70,12 +69,16 @@ namespace KutterJordanBossenForm
             set => txtLog.Text = value;
         }
 
+        public int EncryptedMessageLength
+        {
+            get => (int)nudMessageLength.Value;
+            set => nudMessageLength.Value = value;
+        }
 
         public MainForm()
         {
             InitializeComponent();
 
-            // TODO: change to IoC
             var service = Thread.CurrentThread.GetService<IEncryptionService>();
             _presenter = new MainFormPresenter(this, service);
         }
@@ -122,6 +125,23 @@ namespace KutterJordanBossenForm
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLog.AppendText($"[{DateTime.Now.ToString("hh:mm:ss:ff")}]: {exception.Message}{Environment.NewLine}");
+                txtLog.AppendText($"InnerException: {exception.InnerException}{Environment.NewLine}");
+            }
+        }
+        private void decryptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                _presenter.Decrypt();
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLog.AppendText($"[{DateTime.Now.ToString("hh:mm:ss:ff")}]: {exception.Message}{Environment.NewLine}");
+                txtLog.AppendText($"InnerException: {exception.InnerException}{Environment.NewLine}");
             }
         }
 
@@ -175,6 +195,11 @@ namespace KutterJordanBossenForm
             }
 
             throw new ArgumentException("ConvertTrackBarValue(object sender): sender cannot convert to TrackBar");
+        }
+
+        private void txtMessage_Leave(object sender, EventArgs e)
+        {
+            nudMessageLength.Value = txtMessage.Text.Trim().Length;
         }
     }
 }

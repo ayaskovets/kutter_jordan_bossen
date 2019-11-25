@@ -8,6 +8,11 @@
         string Message { get; set; }
 
         /// <summary>
+        /// Length of the unknown encrypted message
+        /// </summary>
+        int EncryptedMessageLength { get; set; }
+
+        /// <summary>
         /// Probability of a bit being inserted into a pixel. Must be between 0 and 1. Uses to increase cryptographic strength
         /// </summary>
         decimal Density { get; set; }
