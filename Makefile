@@ -1,5 +1,5 @@
 PROJECT = kjb
-LIBRARY = $(PROJECT).dylib
+LIBRARY = lib$(PROJECT).dylib
 
 BIN_DIR = bin
 LIB_DIR = lib
@@ -9,7 +9,7 @@ HDR_DIR = include
 3PT_DIR = 3rd_party
 
 TST_SRC = \
-	$(TST_DIR)/test.cpp
+	$(TST_DIR)/test.c
 
 LIB_SRC = \
 	$(SRC_DIR)/img.cpp \
@@ -19,7 +19,7 @@ LIB_SRC = \
 OBJ_SRC = \
 	$(addprefix $(LIB_DIR)/, $(notdir $(LIB_SRC:.cpp=.o)))
 
-CXXFLAGS += -std=c++11
+CXXFLAGS += -std=c++17
 
 $(OBJ_SRC):
 	$(CXX) $(CXXFLAGS) -fPIC -c -I$(HDR_DIR) -I$(3PT_DIR) -o $@ $(addprefix $(SRC_DIR)/, $(notdir $(@:.o=.cpp)))
@@ -27,9 +27,9 @@ $(OBJ_SRC):
 .PHONY: library test release debug clean run
 
 library:
-	$(CXX) -shared -o $(LIB_DIR)/$(LIBRARY) -fPIC $(OBJ_SRC)
+	$(CXX) -dynamiclib -o $(LIB_DIR)/$(LIBRARY) $(OBJ_SRC)
 test:
-	$(CXX) $(CXXFLAGS) -I$(HDR_DIR) -L$(LIB_DIR) -o $(BIN_DIR)/$(PROJECT)_test $(TST_SRC) $(LIB_DIR)/$(LIBRARY)
+	$(CC) -I$(HDR_DIR) -L$(LIB_DIR) -o $(BIN_DIR)/$(PROJECT)_test $(TST_SRC) $(LIB_DIR)/$(LIBRARY)
 
 release: CXXFLAGS += -O3
 release: clean $(OBJ_SRC) library test
