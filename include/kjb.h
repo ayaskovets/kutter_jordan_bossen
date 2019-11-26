@@ -1,7 +1,5 @@
-#pragma once
-
-#include "img.h"
-#include "msg.h"
+#ifndef KJB_H
+#define KJB_H
 
 enum
 {
@@ -14,10 +12,11 @@ enum
     ERR_INVALID_DENSITY = 5
 };
 
-#ifdef _WIN32
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-extern "C"
-{
+#ifdef _WIN32
 
 /**
  * Encode the provided message into an image
@@ -43,8 +42,8 @@ kjb_insert(const char* container_path,
            unsigned int msg_bits,
            unsigned int seed,
            unsigned int redundancy,
-           float robustness = .2f,
-           float density = .5f);
+           float robustness,
+           float density);
 
 /**
  * Decode a number of bits from the provided image
@@ -68,10 +67,8 @@ kjb_extract(const char* img_path,
             unsigned int msg_bits,
             unsigned int seed,
             unsigned int redundancy,
-            unsigned int nbh_len = 2,
-            float density = .5f);
-
-}
+            unsigned int nbh_len,
+            float density);
 
 #else
 
@@ -81,15 +78,21 @@ int kjb_insert(const char* container_path,
                unsigned int msg_bits,
                unsigned int seed,
                unsigned int redundancy,
-               float robustness = .2f,
-               float density = .5f);
+               float robustness,
+               float density);
 
 int kjb_extract(const char* img_path,
                 unsigned char* msg_buffer,
                 unsigned int msg_bits,
                 unsigned int seed,
                 unsigned int redundancy,
-                unsigned int nbh_len = 2,
-                float density = .5f);
+                unsigned int nbh_len,
+                float density);
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

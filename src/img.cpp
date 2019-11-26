@@ -1,4 +1,4 @@
-#include "img.h"
+#include "img.hpp"
 
 #include <algorithm>
 
@@ -16,7 +16,9 @@ Image::Image(const char* path)
     data = stbi_load(path, &w, &h, NULL, STBI_rgb);
 
     if (!data)
-    { throw "Image path is invalid"; }
+    {
+        throw "Image path is invalid";
+    }
 
     width = static_cast<size_t>(w);
     height = static_cast<size_t>(h);
@@ -29,11 +31,19 @@ Image::~Image()
 }
 
 size_t Image::getWidth() const
-{ return width; }
+{
+    return width;
+}
+
 size_t Image::getHeight() const
-{ return height; }
+{
+    return height;
+}
+
 size_t Image::getCapacity() const
-{ return width * height; }
+{
+    return width * height;
+}
 
 RGBPixel Image::pixel(size_t i, size_t j) const
 {
@@ -52,4 +62,6 @@ RGBPixel Image::pixel(size_t n) const
 }
 
 int Image::writeBMP(const char* path)
-{ return stbi_write_bmp(path, width, height, 3, data); }
+{
+    return stbi_write_bmp(path, width, height, 3, data);
+}
