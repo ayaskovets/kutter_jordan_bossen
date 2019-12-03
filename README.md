@@ -12,4 +12,4 @@ Mac OS X Makefile is provided for building dynamic library version of the projec
 
 ## Example
 
-See the example of calls to the non mangled library API functions in the [test.cpp](test/test.cpp) file
+See the example of calls to the non mangled library API functions in the [test.cpp](test/test.c) file
