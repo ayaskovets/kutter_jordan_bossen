@@ -1,0 +1,24 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Interfaces/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Interfaces/obj/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Presenters/obj/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm.Presenters/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenServices/bin/Debug
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenServices/obj/Debug
+*.cache
+*.exe
+*.pdb
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/.vs/KutterJordanBossenForm/v16/Server/sqlite3
+*.CopyComplete
+*.txt
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm/obj/Debug/KutterJordanBossenForm.MainForm.resources
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/KutterJordanBossenForm/obj/Debug/KutterJordanBossenForm.Properties.Resources.resources
+*.dll
+*.xml
+*.force
+/UI/KutterJordanBossenForm/KutterJordanBossenForm/packages/Autofac.4.9.4
+*.user

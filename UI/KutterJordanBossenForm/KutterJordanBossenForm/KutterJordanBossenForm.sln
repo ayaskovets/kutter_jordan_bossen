@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossenForm", "KutterJordanBossenForm\KutterJordanBossenForm.csproj", "{DA1DC52C-1FFC-4BFC-9A26-A7E84004CF8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnmanagedAssembly", "UnmanagedAssembly", "{CEAE8D60-13E6-4B8D-B13E-084C6EA0C589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossenForm.Presenters", "KutterJordanBossenForm.Presenters\KutterJordanBossenForm.Presenters.csproj", "{E7F7AFA8-2469-4A46-84EB-C9CB6B87AFEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossenForm.Core", "KutterJordanBossenForm.Interfaces\KutterJordanBossenForm.Core.csproj", "{ABC0E52B-D774-4700-B04B-2B254E91EC82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossenServices", "KutterJordanBossenServices\KutterJordanBossenServices.csproj", "{8F679B74-B7B2-4D8D-B81F-D6E9B4C5431F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossenRepository", "KutterJordanBossenRepository\KutterJordanBossenRepository.csproj", "{E25869AB-6F56-4B1F-8FED-31A91B122D06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KutterJordanBossen.IoC", "KutterJordanBossen.IoC\KutterJordanBossen.IoC.csproj", "{9DC1A734-A960-4406-8900-B7A2C55DB32A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA1DC52C-1FFC-4BFC-9A26-A7E84004CF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1DC52C-1FFC-4BFC-9A26-A7E84004CF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1DC52C-1FFC-4BFC-9A26-A7E84004CF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1DC52C-1FFC-4BFC-9A26-A7E84004CF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7F7AFA8-2469-4A46-84EB-C9CB6B87AFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7F7AFA8-2469-4A46-84EB-C9CB6B87AFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7F7AFA8-2469-4A46-84EB-C9CB6B87AFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7F7AFA8-2469-4A46-84EB-C9CB6B87AFEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC0E52B-D774-4700-B04B-2B254E91EC82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC0E52B-D774-4700-B04B-2B254E91EC82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC0E52B-D774-4700-B04B-2B254E91EC82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC0E52B-D774-4700-B04B-2B254E91EC82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F679B74-B7B2-4D8D-B81F-D6E9B4C5431F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F679B74-B7B2-4D8D-B81F-D6E9B4C5431F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F679B74-B7B2-4D8D-B81F-D6E9B4C5431F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F679B74-B7B2-4D8D-B81F-D6E9B4C5431F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E25869AB-6F56-4B1F-8FED-31A91B122D06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E25869AB-6F56-4B1F-8FED-31A91B122D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E25869AB-6F56-4B1F-8FED-31A91B122D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E25869AB-6F56-4B1F-8FED-31A91B122D06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC1A734-A960-4406-8900-B7A2C55DB32A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0ECDCCF4-7E65-4C3F-8618-10ACF964216B}
+	EndGlobalSection
+EndGlobal
